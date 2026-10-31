@@ -19,7 +19,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - run: mkdir site && unzip -q web-app.zip -d site
+      - run: mkdir site && for z in web-app.zip thumbs-*.zip; do unzip -oq "$z" -d site; done
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
